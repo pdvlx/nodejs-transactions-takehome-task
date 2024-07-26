@@ -1,9 +1,9 @@
 # Node.js Transactions Take Home Task (2 hours limited)
 
-This is an example project for a take home task written with Node.js with a basic Svelte client to show how this works.
+This is an example project for a take home task written with Node.js with a basic Svelte client.
 It is a good example how transactions work.
 
-The project totally must take only 2 hours. There lot's of improvement points.
+The project totally must take only 2 hours. There are lot's of improvement points.
 
 ## Technologies:
 - Node.js (Express)
