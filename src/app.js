@@ -8,7 +8,6 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.set('sequelize', sequelize);
 app.set('models', sequelize.models);
-// add helmet to securing the app via headers.
 
 app.use('/api', apiRouter);
 
