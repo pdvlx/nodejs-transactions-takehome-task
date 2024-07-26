@@ -1,6 +1,6 @@
 const contractService = require('../service/contract.service');
 
-async function getContractById(req, res) {
+exports.getContractById = async (req, res) => {
   const { id: contractId } = req.params;
   const { id: profileId } = req.profile;
 
@@ -19,7 +19,7 @@ async function getContractById(req, res) {
   }
 }
 
-async function getContractsForUser(req, res) {
+exports.getContractsForUser = async (req, res) => {
   const { id: profileId } = req.profile;
 
   try {
@@ -30,8 +30,3 @@ async function getContractsForUser(req, res) {
     res.status(500).json({ error: 'Server error' });
   }
 }
-
-module.exports = {
-  getContractById,
-  getContractsForUser,
-};

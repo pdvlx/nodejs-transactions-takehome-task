@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const { Contract } = require('../model');
 
 
-const getContractById = async (profileId, contractId) => {
+exports.getContractById = async (profileId, contractId) => {
   return Contract.findOne({
     where: {
       id: contractId,
@@ -11,7 +11,7 @@ const getContractById = async (profileId, contractId) => {
   });
 };
 
-const getContractsForUser = async (profileId) => {
+exports.getContractsForUser = async (profileId) => {
   return Contract.findAll({
     where: {
       [Op.or]: [{ ClientId: profileId }, { ContractorId: profileId }],
@@ -19,5 +19,3 @@ const getContractsForUser = async (profileId) => {
     },
   });
 };
-
-module.exports = { getContractById, getContractsForUser };
