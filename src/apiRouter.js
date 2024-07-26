@@ -2,9 +2,15 @@ const express = require('express');
 
 const { getProfile } = require('./middleware/getProfile');
 
-const { getContractById, getContractsForUser } = require('./controller/contract.controller');
+const {
+  getContractById,
+  getContractsForUser,
+} = require('./controller/contract.controller');
 const { getUnpaidJobs, payForJob } = require('./controller/job.controller');
-const { depositBalanceController, getBalanceController } = require('./controller/balance.controller')
+const {
+  depositBalanceController,
+  getBalanceController,
+} = require('./controller/balance.controller');
 
 const router = express.Router();
 
@@ -22,6 +28,5 @@ router.post('/jobs/:job_id/pay', payForJob);
 // Define routes for balances
 router.post('/balances/deposit/:userId', depositBalanceController);
 router.get('/balances', getBalanceController); // TODO: delete this.
-
 
 module.exports = router;

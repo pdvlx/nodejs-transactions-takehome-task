@@ -10,7 +10,7 @@ const Contract = sequelize.define('Contract', {
   status: {
     type: ENUM('new', 'in_progress', 'terminated'),
     allowNull: false,
-    defaultValue: 'new'
+    defaultValue: 'new',
   },
 });
 

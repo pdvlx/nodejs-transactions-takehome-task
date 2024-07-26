@@ -8,7 +8,9 @@ exports.depositBalance = async (userId, amount) => {
 
   try {
     // Retrieve the profile
-    const profile = await Profile.findOne({ where: { id: userId, type: 'client' } });
+    const profile = await Profile.findOne({
+      where: { id: userId, type: 'client' },
+    });
 
     if (!profile) {
       logger.info(`Profile not found for user ${userId}`);
@@ -17,11 +19,16 @@ exports.depositBalance = async (userId, amount) => {
 
     // Get the total price of unpaid jobs
     const unpaidJobs = await getUnpaidJobs(userId);
-    const totalUnpaid = unpaidJobs.reduce((total, job) => total + parseFloat(job.price), 0);
+    const totalUnpaid = unpaidJobs.reduce(
+      (total, job) => total + parseFloat(job.price),
+      0
+    );
 
     // Check if the deposit is more than 25% of the total unpaid jobs
     if (amount > totalUnpaid * 0.25) {
-      logger.info(`Deposit exceeds 25% of total unpaid jobs for user ${userId}`);
+      logger.info(
+        `Deposit exceeds 25% of total unpaid jobs for user ${userId}`
+      );
       throw new Error('Deposit exceeds 25% of total unpaid jobs');
     }
 
@@ -38,7 +45,9 @@ exports.depositBalance = async (userId, amount) => {
     // Rollback the transaction
     await transaction.rollback();
 
-    logger.info(`Failed to deposit balance for user ${userId}: ${error.message}`);
+    logger.info(
+      `Failed to deposit balance for user ${userId}: ${error.message}`
+    );
     throw error;
   }
 };

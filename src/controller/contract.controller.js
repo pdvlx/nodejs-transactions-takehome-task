@@ -5,7 +5,10 @@ exports.getContractById = async (req, res) => {
   const { id: profileId } = req.profile;
 
   try {
-    const contract = await contractService.getContractById(contractId, profileId);
+    const contract = await contractService.getContractById(
+      contractId,
+      profileId
+    );
 
     if (!contract) {
       // handle errors?
@@ -17,7 +20,7 @@ exports.getContractById = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};
 
 exports.getContractsForUser = async (req, res) => {
   const { id: profileId } = req.profile;
@@ -29,4 +32,4 @@ exports.getContractsForUser = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};

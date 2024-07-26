@@ -4,7 +4,10 @@ const Contract = require('./contract.model');
 const Job = require('./job.model');
 
 // Define associations
-Profile.hasMany(Contract, { as: 'ContractsAsContractor', foreignKey: 'ContractorId' });
+Profile.hasMany(Contract, {
+  as: 'ContractsAsContractor',
+  foreignKey: 'ContractorId',
+});
 Contract.belongsTo(Profile, { as: 'Contractor', foreignKey: 'ContractorId' });
 
 Profile.hasMany(Contract, { as: 'ContractsAsClient', foreignKey: 'ClientId' });

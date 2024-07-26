@@ -1,7 +1,6 @@
 const { Op } = require('sequelize');
 const { Contract } = require('../model');
 
-
 exports.getContractById = async (profileId, contractId) => {
   return Contract.findOne({
     where: {

@@ -1,5 +1,5 @@
 const { depositBalance, getBalance } = require('../service/balance.service');
-const logger = require('../utils/logger')
+const logger = require('../utils/logger');
 
 exports.depositBalanceController = async (req, res) => {
   try {
@@ -7,8 +7,14 @@ exports.depositBalanceController = async (req, res) => {
     const authenticatedUserId = req.profile.id;
 
     if (userId != authenticatedUserId) {
-      logger.warn(`Unauthorized deposit attempt by user ${authenticatedUserId} to account ${userId}`);
-      res.status(403).send({ message: 'You are not authorized to deposit money into this account' });
+      logger.warn(
+        `Unauthorized deposit attempt by user ${authenticatedUserId} to account ${userId}`
+      );
+      res
+        .status(403)
+        .send({
+          message: 'You are not authorized to deposit money into this account',
+        });
       return;
     }
 
@@ -29,7 +35,7 @@ exports.depositBalanceController = async (req, res) => {
 // I WILL DELETE THIS
 exports.getBalanceController = async (req, res) => {
   try {
-    const userId = req.profile.id; 
+    const userId = req.profile.id;
     const result = await getBalance(userId);
 
     if (result.success) {
@@ -38,6 +44,8 @@ exports.getBalanceController = async (req, res) => {
       res.status(404).send({ message: result.message });
     }
   } catch (error) {
-    res.status(500).send({ message: 'An error occurred while fetching the balance' });
+    res
+      .status(500)
+      .send({ message: 'An error occurred while fetching the balance' });
   }
 };
