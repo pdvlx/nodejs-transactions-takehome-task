@@ -1,0 +1,21 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
+  "plugins": ["jest", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "off"
+  }
+}
