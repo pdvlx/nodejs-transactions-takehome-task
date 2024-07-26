@@ -10,11 +10,9 @@ exports.depositBalanceController = async (req, res) => {
       logger.warn(
         `Unauthorized deposit attempt by user ${authenticatedUserId} to account ${userId}`
       );
-      res
-        .status(403)
-        .send({
-          message: 'You are not authorized to deposit money into this account',
-        });
+      res.status(403).send({
+        message: 'You are not authorized to deposit money into this account',
+      });
       return;
     }
 
