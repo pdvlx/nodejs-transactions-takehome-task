@@ -11,6 +11,10 @@ const {
   depositBalanceController,
   getBalanceController,
 } = require('./controller/balance.controller');
+const {
+  getBestProfessionController,
+  getBestClientsController,
+} = require('./controller/admin.controller');
 
 const router = express.Router();
 
@@ -28,5 +32,9 @@ router.post('/jobs/:job_id/pay', payForJob);
 // Define routes for balances
 router.post('/balances/deposit/:userId', depositBalanceController);
 router.get('/balances', getBalanceController); // TODO: delete this.
+
+// Define routes for admin
+router.get('/admin/best-profession', getBestProfessionController);
+router.get('/admin/best-clients', getBestClientsController);
 
 module.exports = router;
